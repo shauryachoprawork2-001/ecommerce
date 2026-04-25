@@ -1,0 +1,350 @@
+
+/* ================= FONTS ================= */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700;900&display=swap');
+
+/* ================= RESET ================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= THEME ================= */
+:root {
+  --bg-main:    #f0efe9;
+  --card-bg:    #ffffff;
+  --primary:    #c6ff00;
+  --secondary:  #ff2eb4;
+  --text-main:  #111111;
+  --text-muted: #888888;
+  --border:     #111111;
+  --grid-line:  rgba(0, 0, 0, 0.07);
+  --navbar-h:   64px;
+}
+
+.dark-theme {
+  --bg-main:    #0b0f1a;
+  --card-bg:    #111827;
+  --primary:    #c6ff00;
+  --secondary:  #ff2eb4;
+  --text-main:  #f1f5f9;
+  --text-muted: #9ca3af;
+  --border:     #ffffff;
+  --grid-line:  rgba(255, 255, 255, 0.05);
+}
+
+/* ================= BODY ================= */
+body {
+  background-color: var(--bg-main);
+  font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+body, label, p, h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main);
+}
+
+/* ================= GRID BACKGROUND ================= */
+.grid-bg {
+  background-color: var(--bg-main);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-h);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+
+  background: var(--bg-main);
+  border-bottom: 3px solid var(--border);
+}
+
+.dark-theme .navbar {
+  background: var(--bg-main);
+}
+
+/* BRAND */
+.navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--text-main) !important;
+  text-decoration: none;
+}
+
+/* NAV LINKS */
+.navbar a,
+.navbar .nav-link {
+  position: relative;
+  color: var(--text-main) !important;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 12px;
+  transition: color 0.15s;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.25s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: var(--secondary) !important;
+}
+
+/* CART BUTTON */
+.cart-btn {
+  background: var(--primary) !important;
+  border: 2px solid var(--border) !important;
+  padding: 8px 16px !important;
+  border-radius: 0 !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  color: var(--text-main) !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cart-btn:hover {
+  background: var(--secondary) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* SEARCH */
+.navbar input {
+  border: 2px solid var(--border) !important;
+  padding: 7px 12px !important;
+  background: transparent !important;
+  color: var(--text-main) !important;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 0 !important;
+  outline: none;
+}
+
+.navbar input:focus {
+  border-color: var(--secondary) !important;
+  box-shadow: none !important;
+}
+
+/* ================= PAGE WRAPPER ================= */
+/* Apply this to every page's root div to clear the fixed navbar */
+.page-wrap {
+  padding-top: var(--navbar-h);
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* ================= HERO ================= */
+.hero {
+  padding-top: var(--navbar-h);
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 36px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= PRODUCT GRID ================= */
+.grid {
+  width: 100%;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* ================= CARDS ================= */
+.card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  padding: 1rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 0 !important;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.card:hover {
+  transform: rotate(-1deg) scale(1.02);
+  box-shadow: 6px 6px 0px var(--border);
+}
+
+.card-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--primary);
+  border: 2px solid var(--border);
+  padding: 5px 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+/* ================= BUTTONS ================= */
+.btn-primary,
+button.btn {
+  padding: 10px 20px;
+  border: 2px solid var(--border) !important;
+  background: var(--text-main) !important;
+  color: var(--primary) !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0 !important;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-primary:hover,
+button.btn:hover {
+  background: var(--secondary) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* ================= FORMS ================= */
+.container {
+  background: transparent !important;
+}
+
+input,
+select,
+textarea {
+  background: var(--bg-main) !important;
+  color: var(--text-main) !important;
+  border: 2px solid var(--border) !important;
+  padding: 10px 14px !important;
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--secondary) !important;
+  box-shadow: none !important;
+}
+
+::placeholder {
+  color: var(--text-muted) !important;
+  font-weight: 400 !important;
+}
+
+label {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  background: #1f2937 !important;
+  color: #f1f5f9 !important;
+}
+
+/* ================= CART ================= */
+.shopping-cart {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 2px solid var(--border);
+  background: var(--card-bg);
+}
+
+.cart-container {
+  padding-top: var(--navbar-h);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .grid {
+    padding: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .shopping-cart {
+    width: 100%;
+    margin: 20px auto;
+  }
+  /* REMOVE or set to 0 — no longer needed */
+.hero {
+  padding-top: 0;   /* was var(--navbar-h) */
+  
+}
+
+.cart-container {
+  padding-top: 0;   /* was var(--navbar-h) */
+}
+
+.page-wrap {
+  padding-top: 0;   /* was var(--navbar-h) */
+}
+}
